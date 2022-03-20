@@ -31,10 +31,10 @@ class UserTransformer extends TransformerAbstract
      * @return array
      */
     public function transform(User $entity)
-    {
+    {   
         return [
             'id' => $entity->id,
-            'full_name' => $entity->first_name . $entity->last_name,
+            'full_name' => $entity->first_name.' '.$entity->last_name,
             'email' => $entity->email,
             'phone' => $entity->phone_number
         ];

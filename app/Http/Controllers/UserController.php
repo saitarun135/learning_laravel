@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\userRequest;
 use App\Repositories\UserRepositoryInterface;
-
+use App\Transformers\UserTransformer;
 
 class UserController extends Controller
 {
@@ -14,12 +14,12 @@ class UserController extends Controller
     }
 
     public function userRegister(userRequest $request){
-        $this->repository->create($request->all());                    
-        return response()->json('created_succesfully');
+        $data = $this->repository->create($request->all());                    
+        return response()->json(fractal($data,new UserTransformer()));
     }
 
     public function getUsers(){
         $data = $this->repository->show();
-        return response()->json($data);
+        return response()->json(fractal($data, new UserTransformer()));
     }
 }
