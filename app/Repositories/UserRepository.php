@@ -4,9 +4,10 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Entities\User;
+use App\User as AppUser;
 use App\UserSection;
 use App\Validators\UserValidator;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class UserRepositoryEloquent.
@@ -22,7 +23,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function model()
     {
-        return UserSection::class;
+        return AppUser::class;
     }
 
     /**
@@ -34,7 +35,11 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     }
 
     public function create($data){
-       $this->model()::create($data);
+      return $this->model()::create($data);
+    }
+
+    public function show(){
+      return $this->model()::get();
     }
     
 }

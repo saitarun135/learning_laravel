@@ -28,7 +28,8 @@ class userRequest extends FormRequest
     {
         return [
             'first_name' => 'string|required|max:25',
-            'phone_number' => 'required|integer|unique:UserSection'
+            'phone_number' => 'required|integer|unique:user',
+            'email' =>'email|string|unique:user'
         ];
     }
 
@@ -38,7 +39,8 @@ class userRequest extends FormRequest
             'first_name.required' => 'first name is required',
             'first_name.string' => 'it must be a string',
             'phone_number.integer' => 'it must be a number' ,
-            'phone_number.unique' => 'already taken'
+            'phone_number.unique' => 'The number is already taken',
+            'email.unique' => 'The given email is already registered'
         ];
     }
 }
