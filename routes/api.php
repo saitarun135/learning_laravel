@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RestaurentsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,5 @@ use Illuminate\Support\Facades\Route;
 Route::post('/home', [UserController::class,'userRegister']);
 
 Route::get('/list',[UserController::class,'getUsers']);
+
+Route::get('/restaurents',[RestaurentsController::class,'getAllRestaurents']);
