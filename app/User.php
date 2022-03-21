@@ -6,10 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens;
 
     protected $table ='user';
     /**
@@ -18,7 +20,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name','phone_number','email'
+        'first_name','last_name','phone_number','email','password'
     ];
 
     protected $guarded =[];

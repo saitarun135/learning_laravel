@@ -29,3 +29,5 @@ Route::post('/home', [UserController::class,'userRegister']);
 Route::get('/list',[UserController::class,'getUsers']);
 
 Route::get('/restaurents',[RestaurentsController::class,'getAllRestaurents']);
+
+Route::post('/login',[UserController::class,'userLogin']);

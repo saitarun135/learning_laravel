@@ -17,4 +17,6 @@ interface UserRepositoryInterface extends RepositoryInterface
     public function create(Array $attributes);
 
     public function show();
+
+    public function verification($data);
 }

@@ -41,5 +41,10 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     public function show(){
       return $this->model()::get();
     }
+
+    public function verification($data)
+    {
+      
+    }
     
 }
