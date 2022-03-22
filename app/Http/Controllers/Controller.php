@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function getHashValue($data,$key){
+    public function getHashValue(Array $data,$key){
         $encrypt = Hash::make($key);
         unset($data[$key]);
         $data[$key] = $encrypt;
