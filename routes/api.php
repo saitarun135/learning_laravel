@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/welcome','welcomeProject@welcome');
 
-Route::post('/home', [UserController::class,'userRegister']);
+Route::post('/register', [UserController::class,'userRegister']);
 
 Route::get('/list',[UserController::class,'getUsers']);
 

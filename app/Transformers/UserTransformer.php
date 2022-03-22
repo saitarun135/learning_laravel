@@ -3,9 +3,8 @@
 namespace App\Transformers;
 
 use App\User;
-use League\Fractal\TransformerAbstract;
 
-class UserTransformer extends TransformerAbstract
+class UserTransformer extends CustomTransformer
 {
     /**
      * List of resources to automatically include
@@ -33,7 +32,7 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $entity)
     {   
         return [
-            'id' => $entity->id,
+            'id' => $this->getHashedKey($entity->id),
             'full_name' => $entity->first_name.' '.$entity->last_name,
             'email' => $entity->email,
             'phone' => $entity->phone_number
