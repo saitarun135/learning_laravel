@@ -7,6 +7,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\User as AppUser;
 use App\UserSection;
 use App\Validators\UserValidator;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -42,9 +43,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
       return $this->model()::get();
     }
 
-    public function verification($data)
+    public function verification($key,$attribute)
     {
-      
+      return $this->model()::where($key,$attribute);
     }
     
 }
