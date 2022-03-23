@@ -4,9 +4,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateRestuarentsTable.
+ * Class CreateRestaurentRequestsTable.
  */
-class CreateRestuarentsTable extends Migration
+class CreateRestaurentRequestsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -15,7 +15,7 @@ class CreateRestuarentsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('restuarents', function(Blueprint $table) {
+		Schema::create('restaurent_requests', function(Blueprint $table) {
             $table->increments('id');
 
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateRestuarentsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('restuarents');
+		Schema::drop('restaurent_requests');
 	}
 }

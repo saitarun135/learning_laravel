@@ -39,4 +39,8 @@ class RestuarentRepositoryEloquent extends BaseRepository implements RestuarentR
     public function display(){
         return $this->model::get();
     }
+
+    public function create($data){
+        return $this->model()::create($data);
+    }
 }

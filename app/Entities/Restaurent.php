@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Restuarent.
+ * Class Restaurent.
  *
  * @package namespace App\Entities;
  */
-class Restuarent extends Model implements Transformable
+class Restaurent extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -21,6 +21,5 @@ class Restuarent extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
-
 
 }

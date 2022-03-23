@@ -12,4 +12,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface RestuarentRepository extends RepositoryInterface
 {
     public function display();
+    public function create(Array $attributes);
 }
