@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RestaurentsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -31,3 +32,7 @@ Route::get('/list',[UserController::class,'getUsers']);
 Route::get('/restaurents',[RestaurentsController::class,'getAllRestaurents']);
 
 Route::post('/login',[UserController::class,'userLogin']);
+
+Route::post('/adminReg',[AdminController::class,'adminRegister']);
+
+Route::post('/adminLog',[AdminController::class,'adminLogin']);

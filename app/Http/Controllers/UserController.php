@@ -6,31 +6,22 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\userRequest;
 use App\Repositories\UserRepositoryInterface;
 use App\Transformers\UserTransformer;
-use App\User;
-use Carbon\Carbon;
 use Exception;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function __construct(UserRepositoryInterface $repository)
     {
         $this->repository = $repository;
-        //$this->middleware('auth.basic'); 
     }
 
     /**
-     * user can register with basic details  
+    *   user can register with basic details  
     */
 
     public function userRegister(userRequest $request){
-        $data = $this->getHashValue($request->all(),'password');
-        $user = $this->repository->create($data);
-        // $user->createToken('auth')->accessToken;                    
+        $data = $this->getEncryptValue($request->all(),'password');
+        $user = $this->repository->create($data);                   
         return response()->json(fractal($user,new UserTransformer()));
     }
 
@@ -41,9 +32,9 @@ class UserController extends Controller
     */
     
     public function userLogin(LoginRequest $request){
-        $password = Hash::make($request->password);
         $user = $this->repository->verification('email',$request->email)->first();
-        $password_chk = Hash::check($request->password,$password);
+        $password = $this->getEncryptValue($request->all(),'password');
+        $password_chk = ($password != $user->password);
         if(!$password_chk){
             throw new Exception('password is incorrect'.$request->password);
         }

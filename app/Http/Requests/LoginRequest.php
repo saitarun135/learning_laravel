@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
@@ -24,8 +25,15 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required',
+            'email' => ['required',Rule::exists('user','email')->where('email',$this->email)],
             'password' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return[
+            'email.exists' => 'Email is not found'
         ];
     }
 }
