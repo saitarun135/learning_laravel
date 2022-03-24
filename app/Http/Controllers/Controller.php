@@ -23,4 +23,13 @@ class Controller extends BaseController
     public function getDecryptValue($value){
         return decrypt($value);
     }
+
+    public function getAccountId($request)
+    {
+        $token=$request->bearerToken();
+        $tokenParts = explode(".", $token); 
+        $tokenPayload = base64_decode($tokenParts[1]);
+        $jwtPayload = json_decode($tokenPayload);
+        return $jwtPayload->sub;
+    }
 }

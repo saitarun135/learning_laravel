@@ -2,7 +2,7 @@
 
 namespace App\Transformers;
 
-use App\Entities\Restuarent;
+use App\Restaurent;
 use League\Fractal\TransformerAbstract;
 
 class RestuarentTransformer extends TransformerAbstract
@@ -29,8 +29,9 @@ class RestuarentTransformer extends TransformerAbstract
      * A Fractal transformer.
      *
      * @return array
+     * 
      */
-    public function transform(Restuarent $entity)
+    public function transform(Restaurent $entity)
     {
         return [
             'id' => $entity->id,
