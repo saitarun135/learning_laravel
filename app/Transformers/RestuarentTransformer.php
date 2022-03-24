@@ -5,7 +5,7 @@ namespace App\Transformers;
 use App\Restaurent;
 use League\Fractal\TransformerAbstract;
 
-class RestuarentTransformer extends TransformerAbstract
+class RestuarentTransformer extends CustomTransformer
 {
     /**
      * List of resources to automatically include
@@ -34,9 +34,11 @@ class RestuarentTransformer extends TransformerAbstract
     public function transform(Restaurent $entity)
     {
         return [
-            'id' => $entity->id,
-            'name' => $entity->type,
-            'ratings' => $entity->rating
+            'id' => $this->getHashedKey($entity->id),
+            'name' => $entity->name,
+            'type' => $entity->type,
+            'ratings' => $entity->rating,
+            'since_active' => $entity->created_at
         ];
     }
 }
