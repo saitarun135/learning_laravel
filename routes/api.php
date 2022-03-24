@@ -38,3 +38,5 @@ Route::post('/adminReg',[AdminController::class,'adminRegister']);
 Route::post('/adminLog',[AdminController::class,'adminLogin']);
 
 Route::post('/postRest',[RestaurentsController::class,'postRestaurent'])->middleware(['CheckAdmin']);
+
+Route::get('/getRest',[RestaurentsController::class,'getAllRestaurents'])->middleware(['CheckAdmin']);
