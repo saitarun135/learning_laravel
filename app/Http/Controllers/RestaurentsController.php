@@ -9,6 +9,7 @@ use App\Repositories\RestuarentRepository;
 use App\Restaurent;
 use App\Transformers\RestuarentTransformer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurentsController extends Controller
 {
@@ -18,8 +19,11 @@ class RestaurentsController extends Controller
         $this->repository = $repository;
     }
 
-    public function postRestaurent(Request $request){
-        $this->repository->create($request->all());
+    public function postRestaurent(RestaurentRequest $request){
+        $data = $request->all(); 
+        $data['admin_id'] = $this->getAccountId($request);
+        $rest = $this->repository->create($data);
+        return response()->json(fractal($rest,new RestuarentTransformer));
         
     }
 

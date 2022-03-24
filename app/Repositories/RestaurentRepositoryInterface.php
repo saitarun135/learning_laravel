@@ -5,12 +5,11 @@ namespace App\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface RestuarentRepository.
+ * Interface RestaurentRepository.
  *
  * @package namespace App\Repositories;
  */
-interface RestuarentRepository extends RepositoryInterface
+interface RestaurentRepositoryInterface extends RepositoryInterface
 {
-    public function display();
     public function create(Array $attributes);
 }
