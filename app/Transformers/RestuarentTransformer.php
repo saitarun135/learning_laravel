@@ -38,7 +38,7 @@ class RestuarentTransformer extends CustomTransformer
             'name' => $entity->name,
             'type' => $entity->type,
             'ratings' => $entity->rating,
-            'since_active' => $entity->created_at
+            'since_active' => date('Y-M-D',strtotime($entity->created_at))
         ];
     }
 }
