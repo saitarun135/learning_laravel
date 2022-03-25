@@ -39,9 +39,9 @@ class RestaurentRepository extends BaseRepository implements RestaurentRepositor
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
-    public function create(array $attributes)
-    {
-       return $this->model()::create($attributes);
-    }
+    // public function create(array $attributes)
+    // {
+    //    return $this->model()::create($attributes);
+    // }
     
 }
