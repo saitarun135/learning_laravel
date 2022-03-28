@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Criteria\AccountIDCriteriaCriteria;
+use App\Criteria\WhereCriteriaCriteria;
 use App\Http\Requests\RestaurentRequest;
 use App\Repositories\RestaurentRepository;
 use App\Transformers\RestuarentTransformer;
@@ -26,5 +27,11 @@ class RestaurentsController extends Controller
         $this->repository->pushCriteria(new AccountIDCriteriaCriteria);
         $restaurents = $this->repository->all();
         return response()->json(fractal($restaurents,new RestuarentTransformer()));
+    }
+
+    public function findRestaurentById($id){
+        $this->repository->pushCriteria(new WhereCriteriaCriteria('id',$this->getDeHashedKey($id)));
+        $restaurent = $this->repository->paginate();
+        return response()->json(fractal($restaurent,new RestuarentTransformer));
     }
 }

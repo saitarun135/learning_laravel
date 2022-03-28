@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Hashids\Hashids;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -31,5 +32,11 @@ class Controller extends BaseController
         $tokenPayload = base64_decode($tokenParts[1]);
         $jwtPayload = json_decode($tokenPayload);
         return $jwtPayload->sub;
+    }
+
+    public function getDeHashedKey($data)
+    {
+        $obj = new Hashids();
+        return $obj->decode($data);
     }
 }
